@@ -75,13 +75,25 @@ function findMax(node){
     if (BST.prototype.maxVal < node.value) BST.prototype.maxVal = node.value;
 }
 
+// The left most node of the tree will be the smallest 
+// and the right most node will be the largest
+BST.prototype.getMinValOptimized = function(){
+    if (this.left) return this.left.getMinValOptimized();
+    else return this.value;
+}
+
+BST.prototype.getMaxValOptimized = function(){
+    if (this.right) return this.right.getMaxValOptimized();
+    else return this.value;
+}
+
 var bst = new BST(50);
 
 bst.insert(0);
 bst.insert(10);
 bst.insert(45);
 bst.insert(60);
-bst.insert(90);
+bst.insert(-90);
 bst.insert(85);
 console.log(bst.contains(90));
 
@@ -93,4 +105,4 @@ function log(value){
 bst.breadthFirstTraversal(log);
 console.log(bst.maxVal);
 bst.getMaxVal();
-console.log(bst.maxVal);
+console.log(bst.getMaxValOptimized());
