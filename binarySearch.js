@@ -7,7 +7,7 @@ Array.prototype.binarySearch = function (value) {
         return false;
     }
     console.log(a);
-    var mid = Math.floor((0 + a.length - 1) / 2);
+    var mid = Math.round((0 + a.length - 1) / 2);
     console.log(mid);
     if (a[mid] === value) return value;
     else if (a[mid] > value) return a.slice(0, mid).binarySearch(value);
